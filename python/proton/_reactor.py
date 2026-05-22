@@ -1039,7 +1039,7 @@ class _Connector(Handler):
         # if virtual-host not set, use host from address as default
         if self.virtual_host is None:
             connection.hostname = url.host
-        _logger.info("Connecting to %r..." % url)
+        _logger.info("Connecting to %s://%s%s...", url.scheme, url.host, f":{url.port}" if url.port else "")
 
         transport = Transport()
         if self.sasl_enabled:
